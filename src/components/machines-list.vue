@@ -1,47 +1,47 @@
 <script setup lang="ts">
 import MachineItem from './machine-item.vue';
-
-import { onBeforeMount, ref } from 'vue';
-import type { IMachine } from '../interfaces/machine.interface';
-import { getMachines } from '../services/machines.service';
-
-const machines = ref<IMachine[]>();
-
-onBeforeMount(async () => {
-  machines.value = await getMachines();
-});
+import { useStore } from '@/store';
+import { computed, ref, watch } from 'vue';
+import type { IMachine } from '@/interfaces/machine.interface';
+const store = useStore();
+const filteredMachines = ref<IMachine[]>([]);
+const machines = computed(() => store.state.machines);
+watch(
+  () => store.state.search,
+  () => {
+    filteredMachines.value = store.getters.filteredMachines;
+  }
+);
 </script>
 
 <template>
   <div class="wrap">
-    <h1 class="title">Список кофемашин</h1>
-  <div class="machine-wrapper">
-  <div class="machines-list">
-    <ul>
+    <div class="machine-wrapper">
+    <ul v-if="!store.state.search">
       <li :key="machine" v-for="machine in machines">
-        <MachineItem :machine="machine" />
+        <MachineItem :id="machine.id" />
+      </li>
+    </ul>
+    <ul v-else>
+      <li :key="machine" v-for="machine in filteredMachines">
+        <MachineItem :id="machine.id" />
       </li>
     </ul>
   </div>
-</div>
-</div>
-
+  </div>
 </template>
-
 <style scoped>
  .wrap{
   max-width: 90vw;
-  max-height: 80vh;
+  max-height: 90vh;
   margin: 0 auto;
-    ;
 
  }
  .machine-wrapper{
   max-width: 80vw;
   margin: 0 auto;
-  max-height: 70vh;
-  background-color: lightgray;
-  border: 1px solid black;
+  max-height: 90vh;
+  /* background-color: lightgray; */
   overflow-y: auto;
  }
  .machines-list{

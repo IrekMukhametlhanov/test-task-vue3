@@ -1,7 +1,7 @@
 export enum Tags {
-  only_non_cash_payments = 'только безнал',
-  coffee = 'кофе',
-  cashier = 'есть кассир',
-  hot_chocolate = 'горячий шоколад',
-  juices = 'соки',
+  only_non_cash_payments = 'only_non_cash_payments',
+  coffee = 'coffee',
+  cashier = 'cashier',
+  hot_chocolate = 'hot_chocolate',
+  juices = 'juices',
 }
