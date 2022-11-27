@@ -15,8 +15,9 @@ const store = useStore();
 
 <style scoped>
   .input{
-    width: 15%;
-    height: 20px;
+    max-width: 15%;
+    min-width: 250px;
+    height: 30px;
     color: rgb(36, 35, 35);
     border: 0.5px solid lightgray;
     text-align: center;

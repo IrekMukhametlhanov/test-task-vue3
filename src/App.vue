@@ -16,11 +16,31 @@ onBeforeMount(() => {
 </script>
 
 <template>
-
-  <SearchInput />
-  <div v-if="isDateDefined">
+  <div>
+  <div class="title_wrapper">
+  <h1 class="title">Список кофемашин</h1>
+  <SearchInput class="search" />
+   </div>
+  <div class="machines-list" v-if="isDateDefined">
     <MachinesList />
+  </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+  .title_wrapper{
+    display: flex;
+    margin-left: 17vw;
+    font-weight: bolder;
+    align-items: center;
+    text-align: center;
+  }
+
+  .title{
+    color: rgb(107, 30, 30);
+  }
+ .search{
+  margin-left: 30vw;
+ }
+ 
+</style>

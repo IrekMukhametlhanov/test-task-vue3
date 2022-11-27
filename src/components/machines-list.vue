@@ -16,6 +16,7 @@ watch(
 
 <template>
   <div class="wrap">
+
     <div class="machine-wrapper">
     <ul v-if="!store.state.search">
       <li :key="machine" v-for="machine in machines">
@@ -32,28 +33,32 @@ watch(
 </template>
 <style scoped>
  .wrap{
-  max-width: 90vw;
-  max-height: 90vh;
+  max-width: 70vw;
+  max-height: 70vh;
   margin: 0 auto;
 
  }
  .machine-wrapper{
-  max-width: 80vw;
+  max-width: 70vw;
   margin: 0 auto;
-  max-height: 90vh;
+  max-height: 80vh;
   /* background-color: lightgray; */
   overflow-y: auto;
+ }
+
+ li{
+  list-style-type: none;
  }
  .machines-list{
    color: yellowgreen;
  }
 
  ::-webkit-scrollbar{
-    width: 15px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track{
-    background:rgb(237, 237, 237) ;
+    background:rgb(255, 255, 255) ;
 }
 
 ::-webkit-scrollbar-thumb{
